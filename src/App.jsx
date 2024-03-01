@@ -1,6 +1,6 @@
 import './App.css'
-import Navbar from './component/Navbar.jsx'
-import DropArea from './component/DropArea.jsx'
+import Navbar from './component/Home/Navbar.jsx'
+import DropArea from './component/Home/DropArea.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './component/Dashboard/Dashboard.jsx';
 import About from './component/About/About.jsx';
