@@ -1,0 +1,11 @@
+.submit-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.submit-btn button{
+    border-radius:13px ;
+    height: 30px;
+    width: 80px;
+}

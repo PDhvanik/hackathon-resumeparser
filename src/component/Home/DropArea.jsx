@@ -1,7 +1,7 @@
-import { Box, Button, Card, CardContent, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
-
+import './DropArea.css'
 const DropArea = () => {
   const [file, setFile] = useState();
   const [image, setImage] = useState();
@@ -9,7 +9,7 @@ const DropArea = () => {
   const viewHandler = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = ()=> {
+    reader.onload = () => {
       setImage(reader.result);
     }
   }
@@ -18,29 +18,30 @@ const DropArea = () => {
     setImage(null);
   }
   return (
-    <Box sx={{ height: "100vh", bgcolor: "e7ebf0" }}>
-      <Container
+    <>
+      <Box
         sx={{
           display: "flex",
-          fexDirection: "column",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Typography variant="h4" gutterBottom pt={2} color="primary">
-          Image Viewer
+        <Typography variant="h4" gutterBottom pt={2}>
+          Upload Files
         </Typography>
-        <Card sx={{ maxWidth: '600px' }}>
+        <Card sx={{ width: '500px', height: '300px' }}>
           <CardContent>
             <Stack direction="row" justifyContent="center">
               <FileUploader
+                style={{ height: '100px' }}
                 multiple={true}
                 name="files"
                 types={["jpeg", "png", "mp3", "mp4", "gif", "jpg"]}
                 handleChange={(file) => setFile(file)}
               />
             </Stack>
-            <Typography align="center">
+            <Typography align="center" mt={1}>
               {file ? `File name: ${file.name}` : `No files uploaded yet!`}
             </Typography>
             <Stack direction="row" justifyContent="space-between" mt={2}>
@@ -49,9 +50,12 @@ const DropArea = () => {
             </Stack>
           </CardContent>
         </Card>
-        {image && <img src={image} style={{ width: '90%', marginTop: '20px' }} />}
-      </Container>
-    </Box>
+        {image && <img src={image} alt="Preview" style={{ width: '90%', marginTop: '20px' }} />}
+      </Box>
+      <div className="submit-btn">
+        <button type="submit">Submit</button>
+      </div>
+    </>
   );
 };
 
